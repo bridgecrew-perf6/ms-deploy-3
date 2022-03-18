@@ -56,6 +56,7 @@ ingress:
     - host: flightsvc.com
       paths:
         - path: '/flights'
+  tls: []
 
 # ingress:
 #   enabled: false
