@@ -56,8 +56,7 @@ ingress:
     kubernetes.io/ingress.class: traefik
   hosts:
     - host: flightsvc.com
-      paths:
-        - path: '/flights'
+      paths: ['/flights']
   tls: []
 
 # resources: {}
