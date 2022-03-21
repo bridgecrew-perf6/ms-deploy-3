@@ -8,7 +8,7 @@ image:
   repository: myanjini/flights
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: 'v1.0'
+  tag: 'v1.7'
 
 MYSQL_HOST: rds.sk403-003-staging.sk403-003-msur-vpc.com
 MYSQL_USER: microservices
