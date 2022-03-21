@@ -1,15 +1,16 @@
-# Default values for my-flights.
+# Default values for ms-fligths.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
 replicaCount: 1
 
+# 이미지 수정 (도커 허브에 등록된 저장소와 태그로 변경)
 image:
   repository: myanjini/flights
   pullPolicy: IfNotPresent
-  # Overrides the image tag whose default is the chart appVersion.
   tag: 'v1.0'
 
+# MySQL 구성 값
 MYSQL_HOST: rds.sk403-003-staging.sk403-003-msur-vpc.com
 MYSQL_USER: microservices
 MYSQL_DATABASE: microservices_db
@@ -48,43 +49,32 @@ service:
   type: ClusterIP
   port: 80
 
+# 인그레스 속성 업데이트
 ingress:
   enabled: true
   annotations:
     kubernetes.io/ingress.class: traefik
   hosts:
     - host: flightsvc.com
-      paths: ['/flights']
+      paths:
+        - path: '/flights'
   tls: []
 
-# ingress:
-#   enabled: false
-#   className: ""
-#   annotations: {}
-#     # kubernetes.io/ingress.class: nginx
-#     # kubernetes.io/tls-acme: "true"
-#   hosts:
-#     - host: chart-example.local
-#       paths:
-#         - path: /
-#           pathType: ImplementationSpecific
-#   tls: []
-#   #  - secretName: chart-example-tls
-#   #    hosts:
-#   #      - chart-example.local
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - chart-example.local
 
-# resources:
-#   {}
-#   # We usually recommend not to specify default resources and to leave this as a conscious
-#   # choice for the user. This also increases chances charts run on environments with little
-#   # resources, such as Minikube. If you do want to specify resources, uncomment the following
-#   # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
-#   # limits:
-#   #   cpu: 100m
-#   #   memory: 128Mi
-#   # requests:
-#   #   cpu: 100m
-#   #   memory: 128Mi
+#resources: {}
+# We usually recommend not to specify default resources and to leave this as a conscious
+# choice for the user. This also increases chances charts run on environments with little
+# resources, such as Minikube. If you do want to specify resources, uncomment the following
+# lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+# limits:
+#   cpu: 100m
+#   memory: 128Mi
+# requests:
+#   cpu: 100m
+#   memory: 128Mi
 
 autoscaling:
   enabled: false
