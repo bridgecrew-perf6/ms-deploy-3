@@ -57,7 +57,8 @@ ingress:
   hosts:
     - host: flightsvc.com
       paths:
-        - path: '/flights'
+        - pathType: Prefix
+          path: '/flights'
   tls: []
 
 # resources: {}
